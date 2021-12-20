@@ -177,13 +177,13 @@ class SingleChatFragment(private val contact: CommonModel) :
             val messageKey = REF_DATABASE_ROOT.child(NODE_MESSAGES).child(CURRENT_UID)
                 .child(contact.id).push().key.toString()
 
-            val path = REF_STORAGE_ROOT.child(
-                FOLDER_MESSAGE_IMAGE
-            )
-                .child(CURRENT_UID)
+            val path = REF_STORAGE_ROOT
+                .child(FOLDER_MESSAGE_IMAGE)
+                .child(messageKey)
             putImageToStorage(uri, path) {
                 getUrlFromStorage(path) {
                     sendMessageAsImage(contact.id, it, messageKey)
+                    mSmoothScrollToPosition = true
                 }
             }
         }
