@@ -23,7 +23,6 @@ class EnterCodeFragment(val phoneNumber: String, val id: String) :
     }
 
     private fun enterCode() {
-        /* Функция проверяет код, если все нормально, производит создания информации о пользователе в базе данных.*/
         val code = register_input_code.text.toString()
         val credential = PhoneAuthProvider.getCredential(id, code)
         AUTH.signInWithCredential(credential).addOnCompleteListener { task ->
@@ -33,6 +32,13 @@ class EnterCodeFragment(val phoneNumber: String, val id: String) :
                 dateMap[CHILD_ID] = uid
                 dateMap[CHILD_PHONE] = phoneNumber
                 dateMap[CHILD_USERNAME] = uid
+
+                REF_DATABASE_ROOT.child(NODE_USERS).child(uid)
+                    .addListenerForSingleValueEvent(AppValueEventListener{
+                        if(!it.hasChild(CHILD_USERNAME)){
+                            dateMap[CHILD_USERNAME] = uid
+                        }
+                    })
 
                 REF_DATABASE_ROOT.child(
                     NODE_PHONES
