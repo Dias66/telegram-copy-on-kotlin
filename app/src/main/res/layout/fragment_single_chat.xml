@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/colorBlueWish"
-            tools:listitem="@layout/message_item" />
+            tools:listitem="@layout/message_item_image" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
