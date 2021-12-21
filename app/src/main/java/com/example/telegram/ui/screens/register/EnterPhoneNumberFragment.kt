@@ -1,6 +1,5 @@
-package com.example.telegram.ui.fragments.register
+package com.example.telegram.ui.screens.register
 
-import android.R.attr
 import androidx.fragment.app.Fragment
 
 import com.example.telegram.R
@@ -11,7 +10,6 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.fragment_enter_phone_number.*
 import java.util.concurrent.TimeUnit
-import android.R.attr.phoneNumber
 import com.google.firebase.auth.FirebaseAuth
 
 import com.google.firebase.auth.PhoneAuthOptions
